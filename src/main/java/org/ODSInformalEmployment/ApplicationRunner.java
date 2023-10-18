@@ -6,7 +6,7 @@ import org.ODSInformalEmployment.service.MunicipalityRecordServiceImpl;
 
 import java.text.MessageFormat;
 
-public class Main {
+public class ApplicationRunner {
     public static void main(String[] args) {
 
         MunicipalityRecordService municipalityRecordService =
@@ -30,12 +30,22 @@ public class Main {
 
         System.out.println(
                 MessageFormat.format(
-                        "Lista de porcentajes de la informalidad en el municipio: {0}", municipalityRecordService.sortListPercentageInformality()
+                        "Lista ordenada según el porcentaje de la informalidad : {0}", municipalityRecordService.sortListPercentageInformality()
                 ));
 
         System.out.println(
                 MessageFormat.format(
                         "La media de la informalidad en el municipio: {0}", municipalityRecordService.medianInformalEmployment()
+                ));
+
+        System.out.println(
+                MessageFormat.format(
+                        "La media superior de la informalidad en el municipio: {0}", municipalityRecordService.calculateAboveTheMedianInformalityMunicipality()
+                ));
+
+        System.out.println(
+                MessageFormat.format(
+                        "La media inferior de la informalidad en el municipio: {0}", municipalityRecordService.calculateBelowMedianInformalityMunicipality()
                 ));
 
     }

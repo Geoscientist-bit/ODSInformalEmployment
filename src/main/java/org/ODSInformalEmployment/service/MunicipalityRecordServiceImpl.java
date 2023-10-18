@@ -80,4 +80,33 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
 
         return medianInformalEmployment;
     }
+
+    @Override
+    public StringBuilder calculateAboveTheMedianInformalityMunicipality() {
+        List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
+        StringBuilder aboveTheMedian = new StringBuilder();
+
+        for (int i = 0; i < municipalitiesAntioquia.size(); i++)
+        {
+            if (municipalitiesAntioquia.get(i).informalityPercentage() >= medianInformalEmployment())
+            {
+                aboveTheMedian.append(municipalitiesAntioquia.get(i)).append(", ");
+            }
+        }
+        return (aboveTheMedian);
+    }
+
+    public StringBuilder calculateBelowMedianInformalityMunicipality(){
+        List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
+        StringBuilder belowMedian = new StringBuilder();
+
+        for (int i = 0; i < municipalitiesAntioquia.size(); i++)
+        {
+            if(municipalitiesAntioquia.get(i).informalityPercentage() < medianInformalEmployment())
+            {
+               belowMedian.append((municipalitiesAntioquia.get(i))).append(", ");
+            }
+        }
+        return belowMedian;
+    }
 }

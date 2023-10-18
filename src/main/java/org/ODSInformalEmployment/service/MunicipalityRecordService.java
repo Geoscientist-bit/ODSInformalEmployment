@@ -10,5 +10,9 @@ public interface MunicipalityRecordService {
     Integer calculateNumberPeopleInformalEmployment();
     List<MunicipalityData> sortListPercentageInformality();
     Double medianInformalEmployment();
+    StringBuilder calculateAboveTheMedianInformalityMunicipality();
+    StringBuilder calculateBelowMedianInformalityMunicipality();
+
+
 
 }
