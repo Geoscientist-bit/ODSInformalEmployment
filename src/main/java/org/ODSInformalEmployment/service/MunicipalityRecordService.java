@@ -5,8 +5,8 @@ import org.ODSInformalEmployment.model.MunicipalityData;
 import java.util.List;
 
 public interface MunicipalityRecordService {
-    Double calculateAverageInformalityMunicipality();
-    Double calculateVarianceInformalityMunicipality();
+    Double calculateAverageInformalityMunicipalities();
+    Double calculateEstandardDeviationInformalityMunicipality();
     Integer calculateNumberPeopleInformalEmployment();
     List<MunicipalityData> sortListPercentageInformality();
     Double medianInformalEmployment();

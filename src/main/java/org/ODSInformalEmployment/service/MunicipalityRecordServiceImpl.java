@@ -13,13 +13,13 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
     }
 
     @Override
-    public Double calculateVarianceInformalityMunicipality() {
-        double variance = 0d, average = calculateAverageInformalityMunicipality();
+    public Double calculateEstandardDeviationInformalityMunicipality() {
+        double variance = 0d, average = calculateAverageInformalityMunicipalities();
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         for (MunicipalityData municipalityData : municipalitiesAntioquia) {
             variance += (municipalityData.informalityPercentage() - average) * (municipalityData.informalityPercentage() - average);
         }
-        return variance/(municipalitiesAntioquia.size()-1);
+        return Math.sqrt(variance/(municipalitiesAntioquia.size()-1));
     }
 
     @Override
@@ -31,11 +31,11 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
 
         }
 
-        return (int)(cumulativeEmpleoyed*calculateAverageInformalityMunicipality());
+        return (int)(cumulativeEmpleoyed*calculateAverageInformalityMunicipalities());
         //return  cumulativeEmpleoyed;
     }
     @Override
-    public Double calculateAverageInformalityMunicipality() {
+    public Double calculateAverageInformalityMunicipalities() {
         Double accumulated = 0D;
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         for (MunicipalityData municipalityData : municipalitiesAntioquia) {
