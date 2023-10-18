@@ -1,7 +1,7 @@
-package org.example.service;
+package org.ODSInformalEmployment.service;
 
-import org.example.model.MunicipalityData;
-import org.example.repository.MunicipalityDataRepository;
+import org.ODSInformalEmployment.model.MunicipalityData;
+import org.ODSInformalEmployment.repository.MunicipalityDataRepository;
 import java.util.List;
 
 public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{

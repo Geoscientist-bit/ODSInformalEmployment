@@ -1,12 +1,10 @@
-package org.example;
+package org.ODSInformalEmployment;
 
-import org.example.model.MunicipalityData;
-import org.example.repository.MunicipalityDataRepositoryImpl;
-import org.example.service.MunicipalityRecordService;
-import org.example.service.MunicipalityRecordServiceImpl;
+import org.ODSInformalEmployment.repository.MunicipalityDataRepositoryImpl;
+import org.ODSInformalEmployment.service.MunicipalityRecordService;
+import org.ODSInformalEmployment.service.MunicipalityRecordServiceImpl;
 
 import java.text.MessageFormat;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {

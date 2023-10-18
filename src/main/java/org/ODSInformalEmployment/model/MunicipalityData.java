@@ -1,4 +1,4 @@
-package org.example.model;
+package org.ODSInformalEmployment.model;
 
 public record MunicipalityData(String name,
                                Integer population,

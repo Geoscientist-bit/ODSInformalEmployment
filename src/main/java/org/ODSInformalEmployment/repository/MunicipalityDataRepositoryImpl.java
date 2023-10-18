@@ -1,7 +1,7 @@
-package org.example.repository;
+package org.ODSInformalEmployment.repository;
 import java.util.ArrayList;
 import java.util.List;
-import org.example.model.MunicipalityData;
+import org.ODSInformalEmployment.model.MunicipalityData;
 
 public class MunicipalityDataRepositoryImpl implements MunicipalityDataRepository {
     @Override
