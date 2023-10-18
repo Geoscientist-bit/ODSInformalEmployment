@@ -58,5 +58,19 @@ public class ApplicationRunner {
                         "Municipalities with the lowest informality rate: {0}", municipalityRecordService.calculateBelowMedianInformalityMunicipality()
                 ));
 
+        System.out.println("Municipalities with greater informality ");
+        System.out.println(municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-1).name()+", "+municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-1).informalityPercentage()+"%");
+        System.out.println(municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-2).name()+", "+municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-2).informalityPercentage()+"%");
+        System.out.println(municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-3).name()+", "+municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-3).informalityPercentage()+"%");
+        System.out.println(municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-4).name()+", "+municipalityRecordService.sortListPercentageInformality().get(municipalityRecordService.sortListPercentageInformality().size()-4).informalityPercentage()+"%");
+        System.out.println();
+        System.out.println("Municipality with the least informality: "+ municipalityRecordService.sortListPercentageInformality().get(0).name()+", "+municipalityRecordService.sortListPercentageInformality().get(0).informalityPercentage()+"%");
+        System.out.println();
+        System.out.println("""
+                           Municipalities with a higher rate of informality can  
+                           evaluate models of municipalities with less informality to apply possible 
+                           successful business models in other regions or the world to generate 
+                           quality jobs and economic growth in the region.""");
+
     }
 }
