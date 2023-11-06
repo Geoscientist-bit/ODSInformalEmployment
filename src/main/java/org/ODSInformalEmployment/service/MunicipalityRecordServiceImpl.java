@@ -24,11 +24,10 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
 
     @Override
     public Integer calculateNumberPeopleInformalEmployment() {
-        Integer cumulativeEmpleoyed = 0, informalEmployment = 0;
+        Integer cumulativeEmpleoyed = 0;
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         for (MunicipalityData municipalityData : municipalitiesAntioquia) {
             cumulativeEmpleoyed += municipalityData.employedPeople();
-
         }
 
         return (int)(cumulativeEmpleoyed*calculateAverageInformalityMunicipalities());
@@ -67,7 +66,7 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
     @Override
     public Double medianInformalEmployment() {
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
-        int median = (int)(municipalitiesAntioquia.size()/2);
+        int median =(municipalitiesAntioquia.size()/2);
         Double medianInformalEmployment ;
         if(municipalitiesAntioquia.size()%2 == 0)
         {
@@ -86,11 +85,9 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         StringBuilder aboveTheMedian = new StringBuilder();
 
-        for (int i = 0; i < municipalitiesAntioquia.size(); i++)
-        {
-            if (municipalitiesAntioquia.get(i).informalityPercentage() >= medianInformalEmployment())
-            {
-                aboveTheMedian.append(municipalitiesAntioquia.get(i)).append(", ");
+        for (MunicipalityData municipalityData : municipalitiesAntioquia) {
+            if (municipalityData.informalityPercentage() >= medianInformalEmployment()) {
+                aboveTheMedian.append(municipalityData).append(", ");
             }
         }
         return (aboveTheMedian);
@@ -100,11 +97,9 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         StringBuilder belowMedian = new StringBuilder();
 
-        for (int i = 0; i < municipalitiesAntioquia.size(); i++)
-        {
-            if(municipalitiesAntioquia.get(i).informalityPercentage() < medianInformalEmployment())
-            {
-               belowMedian.append((municipalitiesAntioquia.get(i))).append(", ");
+        for (MunicipalityData municipalityData : municipalitiesAntioquia) {
+            if (municipalityData.informalityPercentage() < medianInformalEmployment()) {
+                belowMedian.append(municipalityData).append(", ");
             }
         }
         return belowMedian;

@@ -40,7 +40,7 @@ public class MunicipalityDataRepositoryImpl implements MunicipalityDataRepositor
         municipalitiesAntioquia.add(new MunicipalityData("Guatape",
                 9200,
                 0.73,
-                78000));
+                7800));
 
         municipalitiesAntioquia.add(new MunicipalityData("San Roque",
                 18000,
@@ -95,7 +95,7 @@ public class MunicipalityDataRepositoryImpl implements MunicipalityDataRepositor
         municipalitiesAntioquia.add(new MunicipalityData("Rionegro",
                 146000,
                 0.56,
-                10500));
+                136000));
 
         municipalitiesAntioquia.add(new MunicipalityData("Nariño",
                 10170,
