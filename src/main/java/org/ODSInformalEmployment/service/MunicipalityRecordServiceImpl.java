@@ -3,6 +3,7 @@ package org.ODSInformalEmployment.service;
 import org.ODSInformalEmployment.model.MunicipalityData;
 import org.ODSInformalEmployment.repository.MunicipalityDataRepository;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
 
@@ -68,29 +69,19 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         int median =(municipalitiesAntioquia.size()/2);
         Double medianInformalEmployment ;
-        if(municipalitiesAntioquia.size()%2 == 0)
-        {
-            medianInformalEmployment = (municipalitiesAntioquia.get(median+1).informalityPercentage() + municipalitiesAntioquia.get(median).informalityPercentage()) / 2;
-        }
-        else
-        {
-            medianInformalEmployment = municipalitiesAntioquia.get(median+1).informalityPercentage();
+
+        if(municipalitiesAntioquia.size()%2 == 0){
+
+            medianInformalEmployment = IntStream.range(median, median + 2)
+                    .mapToDouble(i -> municipalitiesAntioquia.get(i).informalityPercentage())
+                    .average()
+                    .orElse(0.0);
+
+        }else{
+            medianInformalEmployment = municipalitiesAntioquia.get(median + 1).informalityPercentage();
         }
 
         return medianInformalEmployment;
-
-        /*
-                if (municipalitiesAntioquia.size() % 2 == 0) {
-            int median = municipalitiesAntioquia.size() / 2;
-            medianInformalEmployment = IntStream.range(median, median + 2)
-                .mapToDouble(i -> municipalitiesAntioquia.get(i).informalityPercentage())
-                .average()
-                .orElse(0.0);
-        } else {
-            int median = municipalitiesAntioquia.size() / 2;
-            medianInformalEmployment = municipalitiesAntioquia.get(median + 1).informalityPercentage();
-        }
-         */
     }
 
     @Override
