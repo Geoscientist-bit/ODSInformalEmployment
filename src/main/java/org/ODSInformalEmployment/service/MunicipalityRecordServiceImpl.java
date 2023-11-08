@@ -78,6 +78,19 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
         }
 
         return medianInformalEmployment;
+
+        /*
+                if (municipalitiesAntioquia.size() % 2 == 0) {
+            int median = municipalitiesAntioquia.size() / 2;
+            medianInformalEmployment = IntStream.range(median, median + 2)
+                .mapToDouble(i -> municipalitiesAntioquia.get(i).informalityPercentage())
+                .average()
+                .orElse(0.0);
+        } else {
+            int median = municipalitiesAntioquia.size() / 2;
+            medianInformalEmployment = municipalitiesAntioquia.get(median + 1).informalityPercentage();
+        }
+         */
     }
 
     @Override
@@ -85,11 +98,10 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         StringBuilder aboveTheMedian = new StringBuilder();
 
-        for (MunicipalityData municipalityData : municipalitiesAntioquia) {
-            if (municipalityData.informalityPercentage() >= medianInformalEmployment()) {
-                aboveTheMedian.append(municipalityData).append(", ");
-            }
-        }
+        municipalitiesAntioquia.stream()
+                .filter(municipalityData -> municipalityData.informalityPercentage() >= medianInformalEmployment())
+                .forEach(municipalityData -> aboveTheMedian.append(municipalityData).append(", "));
+
         return (aboveTheMedian);
     }
 
@@ -97,11 +109,10 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
         List<MunicipalityData> municipalitiesAntioquia = this.municipalityDataRepository.addMunicipalityAntioquia();
         StringBuilder belowMedian = new StringBuilder();
 
-        for (MunicipalityData municipalityData : municipalitiesAntioquia) {
-            if (municipalityData.informalityPercentage() < medianInformalEmployment()) {
-                belowMedian.append(municipalityData).append(", ");
-            }
-        }
+        municipalitiesAntioquia.stream()
+                .filter(municipalityData -> municipalityData.informalityPercentage() < medianInformalEmployment())
+                .forEach(municipalityData -> belowMedian.append(municipalityData).append(", "));
+
         return belowMedian;
     }
 }
