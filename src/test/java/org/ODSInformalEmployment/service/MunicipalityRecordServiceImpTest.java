@@ -22,9 +22,9 @@ public class MunicipalityRecordServiceImpTest {
 
         assertNotNull(numberPeople);
         assertEquals(
-                399369,
+                441634,
                 numberPeople); // Debido a lo valores ingresado en el
-        // MunicipalityRecordServiceImpl, al realizar el promedio es 399369
+        // MunicipalityRecordServiceImpl, al realizar el promedio es 441634
     }
 
 

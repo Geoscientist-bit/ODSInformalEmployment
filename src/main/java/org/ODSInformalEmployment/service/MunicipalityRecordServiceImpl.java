@@ -21,6 +21,8 @@ public class MunicipalityRecordServiceImpl implements MunicipalityRecordService{
             variance += (municipalityData.informalityPercentage() - average) * (municipalityData.informalityPercentage() - average);
         }
         return Math.sqrt(variance/(municipalitiesAntioquia.size()-1));
+
+
     }
 
     @Override
