@@ -13,7 +13,7 @@ import java.util.List;
 
  */
 @RestController
-@RequestMapping("/example/")
+@RequestMapping("/informalEmployment/")
 @CrossOrigin(origins = "*")
 public class MunicipalityController {
 
